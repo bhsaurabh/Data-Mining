@@ -67,7 +67,7 @@ class PageRank(object):
         R_old = np.transpose(np.matrix([0] * len(self.connections)))
         M = self.calculate_stochastic_adjacency()
         # Power Iteration
-        while R.sum() - R_old.sum() > epsilon:
+        while abs(R.sum() - R_old.sum()) > epsilon:
             R_old = R
             R = M * R * self.beta
             S = 1 - R.sum()  # residual pagerank
